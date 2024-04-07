@@ -10,13 +10,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdk 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "ru.iteco.fmhandroid"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdk 32
         versionCode 14
         versionName "1.0.0"
 
@@ -46,6 +46,12 @@ android {
             buildConfigField "String", "BASE_URL", '"https://students.netoservices.ru/qamid-diplom-backend/"'
         }
     }
+    namespace 'ru.iteco.fmhandroid'
+
+    testOptions {
+        animationsDisabled true
+    }
+
 }
 
 dependencies {
@@ -98,7 +104,7 @@ dependencies {
     implementation "com.google.firebase:firebase-analytics-ktx"
     implementation "com.google.firebase:firebase-crashlytics-ktx"
 
-//    implementation "androidx.test.espresso:espresso-idling-resources:3.5.1"
+    implementation "androidx.test.espresso:espresso-idling-resource:3.5.1"
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test:core-ktx:$test_core_version"
     androidTestImplementation "androidx.test.ext:junit-ktx:$test_junit_version"
@@ -109,5 +115,5 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:3.4.0"
     androidTestImplementation "io.qameta.allure:allure-kotlin-android:2.4.0"
     androidTestImplementation "androidx.test.espresso:espresso-intents:3.4.0"
-    androidTestUtil "androidx.test:orchestrator:1.4.2"
+//    androidTestUtil "androidx.test:orchestrator:1.4.2"
 }
