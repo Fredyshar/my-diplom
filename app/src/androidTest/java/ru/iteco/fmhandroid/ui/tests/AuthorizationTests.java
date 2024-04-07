@@ -14,7 +14,8 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
-import ru.iteco.fmhandroid.ui.steps.AuthSteps;
+import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
+import ru.iteco.fmhandroid.ui.steps.BaseSteps;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -30,13 +31,15 @@ public class AuthorizationTests {
     @Test
     @DisplayName("Авторизация с валидным логином и паролем")
     public void test_success_auth_and_logout() throws InterruptedException {
-        AuthSteps.expectSplashScreen();
-        AuthSteps.logIn(validLogin, validPassword);
+        BaseSteps.expectSplashScreen();
+
+        AuthorizationPage.fillLoginAndPasswordField(validLogin, validPassword);
+        AuthorizationPage.clickSignIn();
 
         ViewInteraction logoApp = onView(withId(R.id.trademark_image_view));
         logoApp.check(matches(isDisplayed()));
 
-        AuthSteps.logout();
+        BaseSteps.logout();
     }
 
 }
