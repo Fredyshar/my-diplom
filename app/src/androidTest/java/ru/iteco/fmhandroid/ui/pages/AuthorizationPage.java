@@ -6,20 +6,23 @@ import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static ru.iteco.fmhandroid.ui.steps.BaseSteps.childAtPosition;
+import static ru.iteco.fmhandroid.ui.common.ToastMatcher.childAtPosition;
+import static ru.iteco.fmhandroid.ui.common.EspressoUtils.waitDisplayed;
+
 import androidx.test.espresso.ViewInteraction;
 import ru.iteco.fmhandroid.R;
 
 public class AuthorizationPage {
-    public static ViewInteraction headerAuthPage = onView(withText("Authorization"));
-    public static ViewInteraction loginField = onView(withId(R.id.login_text_input_layout));
-    public static ViewInteraction passField = onView(withId(R.id.password_text_input_layout));
-    public static ViewInteraction signInButton = onView(withId(R.id.enter_button));
+    public ViewInteraction headerAuthPage = onView(withText("Authorization"));
+    public ViewInteraction loginField = onView(withId(R.id.login_text_input_layout));
+    public ViewInteraction passField = onView(withId(R.id.password_text_input_layout));
+    public ViewInteraction signInButton = onView(withId(R.id.enter_button));
 
-    public static void fillLogin(String login) {
+    public void fillLogin(String login) {
        loginField.perform(click());
         onView(allOf(childAtPosition(
                         childAtPosition(
@@ -29,7 +32,7 @@ public class AuthorizationPage {
                 isDisplayed())).perform(replaceText(login), closeSoftKeyboard());
     }
 
-    public static void fillPassword(String password) {
+    public void fillPassword(String password) {
         passField.perform(click());
         onView(allOf(childAtPosition(
                         childAtPosition(
@@ -39,14 +42,14 @@ public class AuthorizationPage {
                 isDisplayed())).perform(replaceText(password), closeSoftKeyboard());
     }
 
-    public static void fillLoginAndPasswordField(String login, String password) {
+    public void fillLoginAndPasswordField(String login, String password) {
         fillLogin(login);
         fillPassword(password);
     }
 
-    public static void clickSignIn() throws InterruptedException {
+    public void clickSignIn() {
         signInButton.check(matches(isDisplayed()));
         signInButton.perform(click());
-        Thread.sleep(2000);
+        onView(isRoot()).perform(waitDisplayed(R.id.authorization_image_button, 2000));
     }
 }
