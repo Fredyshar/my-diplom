@@ -1,8 +1,10 @@
 package ru.iteco.fmhandroid.ui.common;
 
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.PerformException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.util.HumanReadables;
 import androidx.test.espresso.util.TreeIterables;
 
@@ -16,7 +18,7 @@ import org.hamcrest.Matcher;
 
 import java.util.concurrent.TimeoutException;
 
-public class EspressoUtils {
+public abstract class EspressoUtils {
     public static ViewAction waitDisplayed(final int viewId, final long millis) {
         return new ViewAction() {
             @Override
@@ -56,4 +58,19 @@ public class EspressoUtils {
             }
         };
     }
+
+    public static ViewAssertion isNotDisplayed() {
+        return new ViewAssertion() {
+
+            @Override
+            public void check(View view, NoMatchingViewException noView) {
+                if (view != null && isDisplayed().matches(view)) {
+                    throw new AssertionError("View is present in the hierarchy and Displayed: "
+                            + HumanReadables.describe(view));
+                }
+            }
+        };
+    }
+
+    public abstract void check(View view, NoMatchingViewException noView);
 }
