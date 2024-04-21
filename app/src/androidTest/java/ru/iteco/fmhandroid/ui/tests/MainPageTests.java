@@ -23,7 +23,7 @@ import ru.iteco.fmhandroid.ui.pages.MainPage;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class MainPageTest {
+public class MainPageTests {
     private final BaseSteps baseSteps = new BaseSteps();
     private final AuthorizationPage authPage = new AuthorizationPage();
     private final MainPage mainPage = new MainPage();
