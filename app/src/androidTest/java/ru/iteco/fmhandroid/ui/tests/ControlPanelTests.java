@@ -1,9 +1,6 @@
 package ru.iteco.fmhandroid.ui.tests;
 
-import static androidx.test.espresso.Espresso.pressBack;
-
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import org.junit.After;
@@ -18,19 +15,21 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.common.TestData;
 import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
+import ru.iteco.fmhandroid.ui.pages.ControlPanelPage;
 import ru.iteco.fmhandroid.ui.pages.FilterNewsPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class FilterNewsPageTest {
+public class ControlPanelTests {
     private final BaseSteps baseSteps = new BaseSteps();
     private final AuthorizationPage authPage = new AuthorizationPage();
     private final MainPage mainPage = new MainPage();
     private final TestData testData = new TestData();
     private final FilterNewsPage filterNewsPage = new FilterNewsPage();
     private final NewsPage newsPage = new NewsPage();
+    private final ControlPanelPage controlPanelPage = new ControlPanelPage();
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -47,30 +46,21 @@ public class FilterNewsPageTest {
     }
 
     @Test
-    @DisplayName("Видимость основынх элементов на странице")
+    @DisplayName("Видимость основных элементов на странице")
     public void test_displayed_main_elements_on_the_page() {
         mainPage.goToNewsPage();
-        newsPage.clickFilterButton();
-        filterNewsPage.checkHeaderPage();
-        filterNewsPage.checkInitStatePage();
-        pressBack();
+        newsPage.clickEditNewsButton();
+        controlPanelPage.checkHeaderPage();
+        controlPanelPage.checkInitStatePage();
     }
 
     @Test
-    @DisplayName("Клик по кнопке отмены фильтрации возвращает на прошлую страницу")
-    public void test_click_cancel_filter() {
+    @DisplayName("Первая карточка в списке. Основные элементы")
+    public void test_displayed_first_news_on_the_page() {
         mainPage.goToNewsPage();
-        newsPage.clickFilterButton();
-        filterNewsPage.clickCancelButton();
-        newsPage.checkHeaderPage();
+        newsPage.clickEditNewsButton();
+
+        controlPanelPage.checkNewsByIndexAndTitle(0, "ACTIVE", "Праздник");
     }
 
-    @Test
-    @DisplayName("Клик по фильтрации без ввода фильтров возвращает на страницу всех новостей")
-    public void test_click_filter_without_choice_filters() {
-        mainPage.goToNewsPage();
-        newsPage.clickFilterButton();
-        filterNewsPage.clickFilterButton();
-        newsPage.checkHeaderPage();
-    }
 }

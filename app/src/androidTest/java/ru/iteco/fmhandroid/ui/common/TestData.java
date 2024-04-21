@@ -1,10 +1,6 @@
 package ru.iteco.fmhandroid.ui.common;
 
 public class TestData {
-    private final String validLogin = "login2";
-    private final String validPassword = "password2";
-    private final String noValidLogin = "login";
-    private final String noValidPassword = "password";
 
     private final String[] quotes = {
             "«Хоспис для меня - это то, каким должен быть мир.\"",
@@ -34,19 +30,22 @@ public class TestData {
             "https://vhospice.org/#/terms-of-use"
     };
     public String getValidLogin() {
-        return validLogin;
+        return "login2";
     }
 
     public String getValidPassword() {
-        return validPassword;
+        return "password2";
     }
 
     public String getNoValidLogin() {
-        return noValidLogin;
+        return "login";
     }
 
     public String getNoValidPassword() {
-        return noValidPassword;
+        return "password";
+    }
+    public String getNameNews() {
+        return "Тестовое объявление...";
     }
 
     public int lengthQuotes() {
