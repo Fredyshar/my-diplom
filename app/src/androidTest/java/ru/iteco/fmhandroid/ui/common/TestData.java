@@ -29,7 +29,10 @@ public class TestData {
             "\"Делай добро... А добро заразительно. По-моему, все люди милосердны. Нужно просто говорить с ними об этом, суметь разбудить в них чувство сострадания, заложенное от рождения\" - В.В. Миллионщикова",
             "\"Каждый, кто оказывается в стенах хосписа, имеет огромное значение в жизни хосписа и его подопечных\""
     };
-
+    private final String[] link = {
+            "https://vhospice.org/#/privacy-policy/",
+            "https://vhospice.org/#/terms-of-use"
+    };
     public String getValidLogin() {
         return validLogin;
     }
@@ -64,6 +67,14 @@ public class TestData {
         } else {
             return null;
         }
+    }
+    public String getLinkContainingSubstring(String substring) {
+        for (String link : link) {
+            if (link.contains(substring)) {
+                return link;
+            }
+        }
+        return null;
     }
 
 }
