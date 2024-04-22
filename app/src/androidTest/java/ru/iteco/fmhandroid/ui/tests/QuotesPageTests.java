@@ -35,7 +35,6 @@ public class QuotesPageTests {
     private final QuotesPage quotesPage = new QuotesPage();
     private final AboutPage aboutPage = new AboutPage();
     private final NewsPage newsPage = new NewsPage();
-    private int indexQuote = 0;
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -70,6 +69,7 @@ public class QuotesPageTests {
     @Test
     @DisplayName("Разворачивание первой цитаты и сворачивание")
     public void test_drop_down_first_quote() {
+        int indexQuote = 0;
         quotesPage.checkNotDisplayedAvailQuoteDescription(indexQuote);
         quotesPage.dropDownQuote(indexQuote);
         quotesPage.checkAvailQuoteDescription(indexQuote);
