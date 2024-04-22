@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests;
 import static androidx.test.espresso.Espresso.pressBack;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import org.junit.After;
@@ -14,6 +13,7 @@ import org.junit.runner.RunWith;
 
 import java.util.Random;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
@@ -26,7 +26,7 @@ import ru.iteco.fmhandroid.ui.pages.QuotesPage;
 
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class QuotesPageTests {
     private final BaseSteps baseSteps = new BaseSteps();
     private final AuthorizationPage authPage = new AuthorizationPage();
