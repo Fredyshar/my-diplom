@@ -18,6 +18,7 @@ import static ru.iteco.fmhandroid.ui.common.ToastMatcher.withIndex;
 
 import androidx.test.espresso.ViewInteraction;
 
+import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 
 public class ControlPanelPage {
@@ -41,57 +42,58 @@ public class ControlPanelPage {
     }
 
     public void checkContainNewsByIndex(int index, String status) {
+        Allure.step("Проверка видимости текста названия публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_published_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(withText(status)));
-
+        Allure.step("Проверка видимости кнопки удаления публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.delete_news_item_image_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости кнопки редактирования публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.edit_news_item_image_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости кнопки разворачивания публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.view_news_item_image_view), withContentDescription("Expand news card button"),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости title публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_title_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости текста публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_publication_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         withText("Publication date"),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости \"Creation date\" публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_creation_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         withText("Creation date"),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости \"Author\" публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_author_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         withText("Author"),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости иконки публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.category_icon_image_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
@@ -100,58 +102,59 @@ public class ControlPanelPage {
     }
 
     public void checkNewsByIndexAndTitle(int index, String status, String title) {
+        Allure.step("Проверка статуса публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_published_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(withText(status)));
-
+        Allure.step("Проверка видимости кнопки удаления публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.delete_news_item_image_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости иконки публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.edit_news_item_image_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости кнопки разворачивания публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.view_news_item_image_view), withContentDescription("Expand news card button"),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости текста 'title' публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_title_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         withText(title),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости текста \"Publication date\" публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_publication_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         withText("Publication date"),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости текста \"Creation date\" публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_creation_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         withText("Creation date"),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости текста \"Author\" публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.news_item_author_text_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),
                         withText("Author"),
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
-
+        Allure.step("Проверка видимости иконки категории публикации с индексом");
         onView(withIndex(
                 allOf(withId(R.id.category_icon_image_view),
                         withParent(withParent(withId(R.id.news_item_material_card_view))),

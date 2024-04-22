@@ -25,7 +25,7 @@ public class QuotesPage {
     private final ViewInteraction recyclerViewItem = onView(withId(R.id.our_mission_item_list_recycler_view));
 
 
-    public void checkInitStateQuotesPage() {
+    public void checkHeaderQuotesPage() {
         headerQuotesPage.check(matches(isDisplayed()));
         headerQuotesPage.check(matches(withText("Love is all")));
 

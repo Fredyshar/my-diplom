@@ -16,8 +16,8 @@ import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 
 public class BaseSteps {
-    AuthorizationPage authPage = new AuthorizationPage();
-    MainPage mainPage = new MainPage();
+    private final AuthorizationPage authPage = new AuthorizationPage();
+    private final MainPage mainPage = new MainPage();
     private final ViewInteraction logoApp = onView(withId(R.id.trademark_image_view));
 
     public void logout() {
@@ -26,7 +26,6 @@ public class BaseSteps {
     }
 
     public void expectSplashScreen() {
-
         ViewInteraction imageSplashScreen = onView(withId(R.id.splashscreen_image_view));
         imageSplashScreen.check(matches(isDisplayed()));
 
@@ -49,7 +48,7 @@ public class BaseSteps {
         logoApp.check(matches(isDisplayed()));
     }
 
-    public void hamburgerMenuButtonClick() {
+    public void mainMenuButtonClick() {
         mainPage.hamburgerMenuButtonClick();
     }
 }

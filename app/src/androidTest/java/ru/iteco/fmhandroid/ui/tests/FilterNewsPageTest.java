@@ -38,6 +38,8 @@ public class FilterNewsPageTest {
     @Before
     public void logIn() {
         authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
+        mainPage.goToNewsPage();
+        newsPage.clickFilterButton();
     }
 
     @After
@@ -48,8 +50,6 @@ public class FilterNewsPageTest {
     @Test
     @DisplayName("Видимость основынх элементов на странице")
     public void test_displayed_main_elements_on_the_page() {
-        mainPage.goToNewsPage();
-        newsPage.clickFilterButton();
         filterNewsPage.checkHeaderPage();
         filterNewsPage.checkInitStatePage();
         pressBack();
@@ -58,8 +58,6 @@ public class FilterNewsPageTest {
     @Test
     @DisplayName("Клик по кнопке отмены фильтрации возвращает на прошлую страницу")
     public void test_click_cancel_filter() {
-        mainPage.goToNewsPage();
-        newsPage.clickFilterButton();
         filterNewsPage.clickCancelButton();
         newsPage.checkHeaderPage();
     }
@@ -67,8 +65,6 @@ public class FilterNewsPageTest {
     @Test
     @DisplayName("Клик по фильтрации без ввода фильтров возвращает на страницу всех новостей")
     public void test_click_filter_without_choice_filters() {
-        mainPage.goToNewsPage();
-        newsPage.clickFilterButton();
         filterNewsPage.clickFilterButton();
         newsPage.checkHeaderPage();
     }

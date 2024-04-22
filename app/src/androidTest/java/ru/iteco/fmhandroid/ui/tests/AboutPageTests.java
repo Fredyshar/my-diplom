@@ -32,9 +32,9 @@ public class AboutPageTests {
             new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
-
     public void logIn() {
         authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
+        mainPage.goToAboutPage();
     }
 
     @After
@@ -45,8 +45,6 @@ public class AboutPageTests {
     @Test
     @DisplayName("Отображение элементов на странице 'О приложении', и клик по кнопке назад")
     public void test_displayed_main_elements_on_the_page_and_click_back() {
-        mainPage.goToAboutPage();
-
         aboutPage.checkDisplayedVersionAndCompanyInfo();
         aboutPage.checkDisplayedTitlesAndLink();
 
@@ -57,7 +55,6 @@ public class AboutPageTests {
     @Test
     @DisplayName("Перехода по первой ссылке - privacy_policy")
     public void test_open_page_with_privacy_policy() {
-        mainPage.goToAboutPage();
         aboutPage.checkOpenOfPageByLink(testData.getLinkContainingSubstring("privacy"));
         aboutPage.clickBackButton();
     }
@@ -65,7 +62,6 @@ public class AboutPageTests {
     @Test
     @DisplayName("Перехода по второй ссылке - terms_of_use")
     public void test_open_page_with_terms_of_use() {
-        mainPage.goToAboutPage();
         aboutPage.checkOpenOfPageByLink(testData.getLinkContainingSubstring("terms"));
         aboutPage.clickBackButton();
     }

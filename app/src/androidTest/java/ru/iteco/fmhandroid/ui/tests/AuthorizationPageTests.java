@@ -17,7 +17,7 @@ import ru.iteco.fmhandroid.ui.common.TestData;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class AuthorizationTests {
+public class AuthorizationPageTests {
     private final BaseSteps baseSteps = new BaseSteps();
     private final AuthorizationPage authPage = new AuthorizationPage();
     private final TestData testData = new TestData();

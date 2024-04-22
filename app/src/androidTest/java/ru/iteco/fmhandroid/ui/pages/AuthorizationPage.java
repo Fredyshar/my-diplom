@@ -10,14 +10,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 import static ru.iteco.fmhandroid.ui.common.ToastMatcher.childAtPosition;
 import static ru.iteco.fmhandroid.ui.common.EspressoUtils.waitDisplayed;
 
 import androidx.test.espresso.ViewInteraction;
 
 import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.common.TestData;
 
 public class AuthorizationPage {
     private final ViewInteraction headerAuthPage = onView(withText("Authorization"));

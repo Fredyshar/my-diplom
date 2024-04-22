@@ -18,8 +18,11 @@ import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.common.TestData;
+import ru.iteco.fmhandroid.ui.pages.AboutPage;
 import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
+import ru.iteco.fmhandroid.ui.pages.NewsPage;
+import ru.iteco.fmhandroid.ui.pages.QuotesPage;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -28,6 +31,9 @@ public class MainPageTests {
     private final AuthorizationPage authPage = new AuthorizationPage();
     private final MainPage mainPage = new MainPage();
     private final TestData testData = new TestData();
+    private final NewsPage newsPage = new NewsPage();
+    private final QuotesPage quotesPage = new QuotesPage();
+    private final AboutPage aboutPage = new AboutPage();
 
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
@@ -75,4 +81,23 @@ public class MainPageTests {
         mainPage.checkInitStateNewsBlock();
     }
 
+    @Test
+    @DisplayName("Переход с главной страницы на страницы прилложения")
+    public void navigatingPagesOfMainMenuAndAllNewsButton() {
+        mainPage.goToNewsPage();
+        newsPage.checkHeaderPage();
+        pressBack();
+
+        mainPage.clickAllNewsButton();
+        newsPage.checkHeaderPage();
+        pressBack();
+
+        mainPage.goToQuotesPage();
+        quotesPage.checkHeaderQuotesPage();
+        pressBack();
+
+        mainPage.goToAboutPage();
+        aboutPage.checkDisplayedVersionAndCompanyInfo();
+        aboutPage.clickBackButton();
+    }
 }

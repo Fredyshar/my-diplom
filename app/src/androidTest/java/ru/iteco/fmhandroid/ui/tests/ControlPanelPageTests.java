@@ -22,7 +22,7 @@ import ru.iteco.fmhandroid.ui.pages.NewsPage;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
-public class ControlPanelTests {
+public class ControlPanelPageTests {
     private final BaseSteps baseSteps = new BaseSteps();
     private final AuthorizationPage authPage = new AuthorizationPage();
     private final MainPage mainPage = new MainPage();
@@ -38,6 +38,8 @@ public class ControlPanelTests {
     @Before
     public void logIn() {
         authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
+        mainPage.goToNewsPage();
+        newsPage.clickEditNewsButton();
     }
 
     @After
@@ -48,8 +50,6 @@ public class ControlPanelTests {
     @Test
     @DisplayName("Видимость основных элементов на странице")
     public void test_displayed_main_elements_on_the_page() {
-        mainPage.goToNewsPage();
-        newsPage.clickEditNewsButton();
         controlPanelPage.checkHeaderPage();
         controlPanelPage.checkInitStatePage();
     }
@@ -57,9 +57,6 @@ public class ControlPanelTests {
     @Test
     @DisplayName("Первая карточка в списке. Основные элементы")
     public void test_displayed_first_news_on_the_page() {
-        mainPage.goToNewsPage();
-        newsPage.clickEditNewsButton();
-
         controlPanelPage.checkNewsByIndexAndTitle(0, "ACTIVE", "Праздник");
     }
 

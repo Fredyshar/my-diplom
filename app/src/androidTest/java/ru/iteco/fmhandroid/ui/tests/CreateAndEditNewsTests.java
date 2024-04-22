@@ -18,6 +18,7 @@ import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.common.TestData;
 import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import ru.iteco.fmhandroid.ui.pages.ControlPanelPage;
+import ru.iteco.fmhandroid.ui.pages.CreateAndEditNewsPage;
 import ru.iteco.fmhandroid.ui.pages.FilterNewsPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
