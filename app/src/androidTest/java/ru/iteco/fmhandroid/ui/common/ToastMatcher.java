@@ -1,10 +1,13 @@
 package ru.iteco.fmhandroid.ui.common;
+
 import android.os.IBinder;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.WindowManager;
+
 import androidx.test.espresso.Root;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -45,6 +48,7 @@ public class ToastMatcher extends TypeSafeMatcher<Root> {
             }
         };
     }
+
     public static Matcher<View> withIndex(final Matcher<View> matcher, final int index) {
         return new TypeSafeMatcher<View>() {
             int currentIndex = 0;

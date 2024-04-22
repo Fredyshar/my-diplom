@@ -29,6 +29,7 @@ public class TestData {
             "https://vhospice.org/#/privacy-policy/",
             "https://vhospice.org/#/terms-of-use"
     };
+
     public String getValidLogin() {
         return "login2";
     }
@@ -44,6 +45,7 @@ public class TestData {
     public String getNoValidPassword() {
         return "password";
     }
+
     public String getNameNews() {
         return "Тестовое объявление...";
     }
@@ -67,6 +69,7 @@ public class TestData {
             return null;
         }
     }
+
     public String getLinkContainingSubstring(String substring) {
         for (String link : link) {
             if (link.contains(substring)) {

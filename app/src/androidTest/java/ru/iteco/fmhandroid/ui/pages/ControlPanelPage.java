@@ -1,29 +1,22 @@
 package ru.iteco.fmhandroid.ui.pages;
 
-import static androidx.core.content.res.TypedArrayUtils.getText;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withParentIndex;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 
-import static ru.iteco.fmhandroid.ui.common.ToastMatcher.childAtPosition;
 import static ru.iteco.fmhandroid.ui.common.ToastMatcher.withIndex;
 
 import androidx.test.espresso.ViewInteraction;
-
-import org.hamcrest.Description;
 
 import ru.iteco.fmhandroid.R;
 
@@ -105,6 +98,7 @@ public class ControlPanelPage {
                         isDisplayed()), index))
                 .check(matches(isDisplayed()));
     }
+
     public void checkNewsByIndexAndTitle(int index, String status, String title) {
         onView(withIndex(
                 allOf(withId(R.id.news_item_published_text_view),
@@ -179,7 +173,7 @@ public class ControlPanelPage {
 
     public void searchNewsByTitle(String title, String descriptionText) {
         onView(withId(R.id.news_list_recycler_view))
-                .perform(actionOnItem(hasDescendant(withText(title)) , scrollTo()), click());
+                .perform(actionOnItem(hasDescendant(withText(title)), scrollTo()), click());
         onView(withId(R.id.news_item_description_text_view))
                 .check(matches(withText(descriptionText)));
     }

@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests;
 import static androidx.test.espresso.Espresso.pressBack;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
 import org.junit.After;

@@ -43,6 +43,7 @@ public class QuotesTests {
     public void logOut() {
         baseSteps.logout();
     }
+
     @Test
     @DisplayName("Переход на страницу с цитатами и видимость основных элементов")
     public void test_quotes_page_navigation_and_visibility() {
@@ -59,7 +60,6 @@ public class QuotesTests {
         quotesPage.checkAvailQuote(indexQuote);
         quotesPage.dropDownQuote(indexQuote);
         quotesPage.checkAvailQuoteDescription(indexQuote);
-
     }
 
     @Test

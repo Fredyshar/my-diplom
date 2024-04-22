@@ -65,6 +65,7 @@ public class AuthorizationTests {
 
         baseSteps.showToastMessage("Login and password cannot be empty");
     }
+
     @Test
     @DisplayName("Авторизация с пустым паролем")
     public void test_auth_with_empty_pass() {

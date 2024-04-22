@@ -1,46 +1,21 @@
-package ru.iteco.fmhandroid.ui;
+package ru.iteco.fmhandroid.ui.tests;
 
-
-import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
-import static androidx.test.espresso.matcher.ViewMatchers.withParentIndex;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anything;
-import static org.hamcrest.Matchers.is;
 
-import static ru.iteco.fmhandroid.ui.common.ToastMatcher.childAtPosition;
 import static ru.iteco.fmhandroid.ui.common.ToastMatcher.withIndex;
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-
-import androidx.test.espresso.DataInteraction;
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.LargeTest;
-
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.pages.ControlPanelPage;
@@ -61,6 +36,7 @@ public class CreateAndEditNewsPage {
     private final ViewInteraction okButton = onView(withId(android.R.id.button1));
     private final ViewInteraction timePublishField = onView(withId(R.id.news_item_publish_time_text_input_edit_text));
     private final ViewInteraction descriptionField = onView(withId(R.id.news_item_description_text_input_edit_text));
+
     public void checkHeaderPage() {
         headerPage.check(matches(withText("Creating")));
         headerPage.check(matches(withText("News")));
@@ -79,6 +55,7 @@ public class CreateAndEditNewsPage {
         saveButton.check(matches(isDisplayed()));
         saveButton.perform(scrollTo(), click());
     }
+
     public void createNews(String nameNews, String datePublish, String description) {
         addNewsButton.check(matches(isDisplayed()));
         addNewsButton.perform(click());

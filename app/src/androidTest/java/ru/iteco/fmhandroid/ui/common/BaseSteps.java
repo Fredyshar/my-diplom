@@ -19,6 +19,7 @@ public class BaseSteps {
     AuthorizationPage authPage = new AuthorizationPage();
     MainPage mainPage = new MainPage();
     private final ViewInteraction logoApp = onView(withId(R.id.trademark_image_view));
+
     public void logout() {
         mainPage.logOut();
         authPage.checkHeaderAuthPage();

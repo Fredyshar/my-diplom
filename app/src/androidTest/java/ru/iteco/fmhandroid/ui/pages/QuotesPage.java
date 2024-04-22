@@ -42,7 +42,7 @@ public class QuotesPage {
         quoteTitle.check(matches(withText(testData.getQuoteTitleByIndex(index))));
     }
 
-    public  void checkAvailQuoteDescription(int index) {
+    public void checkAvailQuoteDescription(int index) {
         ViewInteraction quoteDescription = onView(
                 allOf(withId(R.id.our_mission_item_description_text_view), withText(testData.getQuoteDescriptionByIndex(index)),
                         withParent(withParent(withId(R.id.our_mission_item_material_card_view))),
@@ -51,7 +51,7 @@ public class QuotesPage {
         quoteDescription.check(matches(withText(testData.getQuoteDescriptionByIndex(index))));
     }
 
-    public  void checkNotDisplayedAvailQuoteDescription(int index) {
+    public void checkNotDisplayedAvailQuoteDescription(int index) {
         ViewInteraction quoteDescription = onView(
                 allOf(withId(R.id.our_mission_item_description_text_view), withText(testData.getQuoteDescriptionByIndex(index)),
                         withParent(withParent(withId(R.id.our_mission_item_material_card_view))),

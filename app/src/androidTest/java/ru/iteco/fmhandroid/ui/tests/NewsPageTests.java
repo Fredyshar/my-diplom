@@ -35,6 +35,7 @@ public class NewsPageTests {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
+
     @Before
     public void logIn() {
         authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
@@ -53,13 +54,6 @@ public class NewsPageTests {
         newsPage.checkHeaderPage();
         newsPage.checkDisplayedMainElements();
     }
-
-//    @Test
-//@DisplayName("")
-//    public void test_click_and_check_text_news() {
-//        mainPage.goToNewsPage();
-//        newsPage.clickNewsByIndex(0);
-//    }
 
     @Test
     @DisplayName("Переход на страницу фильтрации")

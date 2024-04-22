@@ -49,6 +49,7 @@ public class NewsPage {
         ViewInteraction itemNews = onView(allOf(withId(R.id.news_item_material_card_view), withParentIndex(index)));
         itemNews.check(matches(isDisplayed()));
     }
+
     public void checkDescriptionNews(String titleNewsText, String descriptionNewsText) {
 
     }

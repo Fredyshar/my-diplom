@@ -66,6 +66,7 @@ public class MainPage {
         hamburgerMenuButton.perform(click());
         buttonToNewsPage.perform(click());
     }
+
     public void goToAboutPage() {
         hamburgerMenuButton.perform(click());
         buttonToAboutPage.perform(click());

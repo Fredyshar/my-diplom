@@ -15,17 +15,18 @@ import static ru.iteco.fmhandroid.ui.common.ToastMatcher.childAtPosition;
 import static ru.iteco.fmhandroid.ui.common.EspressoUtils.waitDisplayed;
 
 import androidx.test.espresso.ViewInteraction;
+
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.common.TestData;
 
 public class AuthorizationPage {
-    private final  ViewInteraction headerAuthPage = onView(withText("Authorization"));
+    private final ViewInteraction headerAuthPage = onView(withText("Authorization"));
     private final ViewInteraction loginField = onView(withId(R.id.login_text_input_layout));
     private final ViewInteraction passField = onView(withId(R.id.password_text_input_layout));
     private final ViewInteraction signInButton = onView(withId(R.id.enter_button));
 
     public void fillLogin(String login) {
-       loginField.perform(click());
+        loginField.perform(click());
         onView(allOf(childAtPosition(
                         childAtPosition(
                                 withId(R.id.login_text_input_layout),
