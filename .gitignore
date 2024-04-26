@@ -3,6 +3,8 @@ HELP.md
 .gradle
 build/
 app/release/
+.DS_Store
+app/.DS_Store
 
 ### STS ###
 .apt_generated

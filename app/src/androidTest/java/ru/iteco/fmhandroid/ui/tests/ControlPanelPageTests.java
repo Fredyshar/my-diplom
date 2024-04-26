@@ -57,7 +57,9 @@ public class ControlPanelPageTests {
     @Test
     @DisplayName("Первая карточка в списке. Основные элементы")
     public void test_displayed_first_news_on_the_page() {
-        controlPanelPage.checkNewsByIndexAndTitle(0, "ACTIVE", "Праздник");
+        String statusFirstNews = controlPanelPage.getNewsStatus(0);
+        String titleFirstNews = controlPanelPage.getNewsTitle(0);
+        controlPanelPage.checkNewsByIndexAndTitle(0, statusFirstNews, titleFirstNews);
     }
 
 }

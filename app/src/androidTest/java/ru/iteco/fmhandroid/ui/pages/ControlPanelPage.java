@@ -6,6 +6,7 @@ import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItem;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -16,7 +17,14 @@ import static org.hamcrest.Matchers.allOf;
 
 import static ru.iteco.fmhandroid.ui.common.ToastMatcher.withIndex;
 
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
+
+import org.hamcrest.Matcher;
 
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
@@ -180,5 +188,45 @@ public class ControlPanelPage {
         onView(withId(R.id.news_item_description_text_view))
                 .check(matches(withText(descriptionText)));
     }
+
+    public String getNewsStatus(int index) {
+        ViewInteraction statusNewsByIndex = onView(withIndex(
+                allOf(withId(R.id.news_item_published_text_view),
+                        withParent(withParent(withId(R.id.news_item_material_card_view))),
+                        isDisplayed()), index));
+
+        return getTextFromView(statusNewsByIndex);
+    }
+
+    public String getNewsTitle(int index) {
+        ViewInteraction titleNewsByIndex = onView(withIndex(
+                allOf(withId(R.id.news_item_title_text_view),
+                        withParent(withParent(withId(R.id.news_item_material_card_view))),
+                        isDisplayed()), index));
+
+        return getTextFromView(titleNewsByIndex);
+    }
+    private String getTextFromView(ViewInteraction viewInteraction) {
+        final String[] text = {""};
+        viewInteraction.perform(new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return isAssignableFrom(TextView.class);
+            }
+
+            @Override
+            public String getDescription() {
+                return "getting text from TextView";
+            }
+
+            @Override
+            public void perform(UiController uiController, View view) {
+                TextView textView = (TextView) view;
+                text[0] = textView.getText().toString();
+            }
+        });
+        return text[0];
+    }
+
 
 }
