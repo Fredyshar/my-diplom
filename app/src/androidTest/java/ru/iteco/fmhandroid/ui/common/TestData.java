@@ -29,6 +29,9 @@ public class TestData {
             "https://vhospice.org/#/privacy-policy/",
             "https://vhospice.org/#/terms-of-use"
     };
+    private final String[] dateCreateNews = {
+            "25.05.2024",
+    };
 
     public String getValidLogin() {
         return "login2";
@@ -79,4 +82,19 @@ public class TestData {
         return null;
     }
 
+    public String getDateCreateNews(int index) {
+        return dateCreateNews[index];
+    }
+    public String getDateFilterNews(String date) {
+        String dateFromFilter = "20.05.2024";
+        String dateToFilter = "28.05.2024";
+        switch (date) {
+            case "fromFilter":
+                return dateFromFilter;
+            case "toFilter":
+                return dateToFilter;
+            default:
+                return "";
+        }
+    }
 }

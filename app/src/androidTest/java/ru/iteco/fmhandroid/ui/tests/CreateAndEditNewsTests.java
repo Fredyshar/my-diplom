@@ -58,14 +58,14 @@ public class CreateAndEditNewsTests {
     @Test
     @DisplayName("Создание активной новости")
     public void test_create_active_news() {
-        createAndEditNewsPage.createNews(testData.getNameNews(), "14.05.2024", descriptionText);
+        createAndEditNewsPage.createNews(testData.getNameNews(), testData.getDateCreateNews(0), descriptionText);
     }
 
     @Test
     @DisplayName("Создание активной новости, проверка с сортировкой и удаление новости")
     public void test_create_active_news_check_with_sort_and_delete() {
-        createAndEditNewsPage.createNews(testData.getNameNews(), "14.05.2024", descriptionText);
-        filterNewsPage.useFilter("12.05.2024", "15.05.2024");
+        createAndEditNewsPage.createNews(testData.getNameNews(), testData.getDateCreateNews(0), descriptionText);
+        filterNewsPage.useFilter(testData.getDateFilterNews("fromFilter"), testData.getDateFilterNews("toFilter"));
         createAndEditNewsPage.checkCreatedNews(0, "ACTIVE", testData.getNameNews());
         createAndEditNewsPage.deleteNews(0);
     }
