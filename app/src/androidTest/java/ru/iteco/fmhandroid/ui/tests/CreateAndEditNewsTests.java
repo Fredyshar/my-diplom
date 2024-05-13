@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import java.util.Random;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
@@ -49,24 +50,34 @@ public class CreateAndEditNewsTests {
     @Test
     @DisplayName("Проверка статуса новости, изменение статуса и возвращение в начальное состояние ")
     public void test_edit_status_news() {
-        controlPanelPage.checkContainNewsByIndex(0, "ACTIVE");
-        createAndEditNewsPage.editNewsByIndex(0);
+        int index = 0;
+        Allure.step("Проверка статус публикации с индексом:" + index);
+        controlPanelPage.checkContainNewsByIndex(index, "ACTIVE");
+        Allure.step("Изменение статуса публикации с индексом:" + index);
+        createAndEditNewsPage.editNewsByIndex(index);
+        Allure.step("Проверка изменения статуса публикации с индексом:" + index);
         controlPanelPage.checkContainNewsByIndex(0, "NOT ACTIVE");
-        createAndEditNewsPage.editNewsByIndex(0);
+        Allure.step("Изменение статуса в первоначальное состояние публикации с индексом:" + index);
+        createAndEditNewsPage.editNewsByIndex(index);
     }
 
     @Test
     @DisplayName("Создание активной новости")
     public void test_create_active_news() {
+        Allure.step("Создание активной новости с текстом:" + descriptionText);
         createAndEditNewsPage.createNews(testData.getNameNews(), testData.getDateCreateNews(0), descriptionText);
     }
 
     @Test
     @DisplayName("Создание активной новости, проверка с сортировкой и удаление новости")
     public void test_create_active_news_check_with_sort_and_delete() {
+        Allure.step("Создание активной новости с текстом:" + descriptionText);
         createAndEditNewsPage.createNews(testData.getNameNews(), testData.getDateCreateNews(0), descriptionText);
+        Allure.step("Фильтрация новостей с датой начала:" + testData.getDateFilterNews("fromFilter") + "и датой окончания:" + testData.getDateFilterNews("toFilter"));
         filterNewsPage.useFilter(testData.getDateFilterNews("fromFilter"), testData.getDateFilterNews("toFilter"));
+        Allure.step("Проверка создания новости с активным статусом и именем:" + testData.getNameNews());
         createAndEditNewsPage.checkCreatedNews(0, "ACTIVE", testData.getNameNews());
+        Allure.step("Удаление нрвости с индексом 0");
         createAndEditNewsPage.deleteNews(0);
     }
 }
