@@ -1,5 +1,9 @@
 package ru.iteco.fmhandroid.ui.tests;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
+import static ru.iteco.fmhandroid.ui.common.EspressoUtils.waitDisplayed;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
@@ -10,6 +14,7 @@ import org.junit.runner.RunWith;
 
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
@@ -28,7 +33,11 @@ public class AuthorizationPageTests {
 
     @Before
     public void setUp() {
-        baseSteps.expectSplashScreen();
+        try {
+            onView(isRoot()).perform(waitDisplayed(R.id.login_text_input_layout, 5000));
+        } catch (Exception e) {
+            baseSteps.logout();
+        }
     }
 
     @Test

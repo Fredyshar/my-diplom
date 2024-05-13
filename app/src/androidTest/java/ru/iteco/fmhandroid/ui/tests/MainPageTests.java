@@ -7,7 +7,6 @@ import static androidx.test.espresso.Espresso.pressBack;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,9 +16,7 @@ import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
-import ru.iteco.fmhandroid.ui.common.TestData;
 import ru.iteco.fmhandroid.ui.pages.AboutPage;
-import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
 import ru.iteco.fmhandroid.ui.pages.QuotesPage;
@@ -28,9 +25,7 @@ import ru.iteco.fmhandroid.ui.pages.QuotesPage;
 @RunWith(AllureAndroidJUnit4.class)
 public class MainPageTests {
     private final BaseSteps baseSteps = new BaseSteps();
-    private final AuthorizationPage authPage = new AuthorizationPage();
     private final MainPage mainPage = new MainPage();
-    private final TestData testData = new TestData();
     private final NewsPage newsPage = new NewsPage();
     private final QuotesPage quotesPage = new QuotesPage();
     private final AboutPage aboutPage = new AboutPage();
@@ -40,14 +35,10 @@ public class MainPageTests {
             new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
-    public void logIn() {
-        authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
+    public void setUp() {
+        baseSteps.ensureAuthenticated();
     }
 
-    @After
-    public void logOut() {
-        baseSteps.logout();
-    }
 
     @Test
     @DisplayName("Отображение элементов на главной странице и изначального состояния блока новостей")

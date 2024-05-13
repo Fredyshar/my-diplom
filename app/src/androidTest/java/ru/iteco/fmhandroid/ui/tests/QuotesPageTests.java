@@ -5,7 +5,6 @@ import static androidx.test.espresso.Espresso.pressBack;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,7 +18,6 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.common.TestData;
 import ru.iteco.fmhandroid.ui.pages.AboutPage;
-import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
 import ru.iteco.fmhandroid.ui.pages.QuotesPage;
@@ -29,7 +27,6 @@ import ru.iteco.fmhandroid.ui.pages.QuotesPage;
 @RunWith(AllureAndroidJUnit4.class)
 public class QuotesPageTests {
     private final BaseSteps baseSteps = new BaseSteps();
-    private final AuthorizationPage authPage = new AuthorizationPage();
     private final MainPage mainPage = new MainPage();
     private final TestData testData = new TestData();
     private final QuotesPage quotesPage = new QuotesPage();
@@ -41,14 +38,9 @@ public class QuotesPageTests {
             new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
-    public void logIn() {
-        authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
-        mainPage.goToQuotesPage();
-    }
-
-    @After
-    public void logOut() {
-        baseSteps.logout();
+    public void setUp() {
+        baseSteps.ensureAuthenticated();
+        baseSteps.navigationTo("QuotesPage");
     }
 
     @Test

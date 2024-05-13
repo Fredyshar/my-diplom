@@ -19,6 +19,7 @@ public class BaseSteps {
     private final AuthorizationPage authPage = new AuthorizationPage();
     private final MainPage mainPage = new MainPage();
     private final ViewInteraction logoApp = onView(withId(R.id.trademark_image_view));
+    private final TestData testData = new TestData();
 
     public void logout() {
         mainPage.logOut();
@@ -48,7 +49,36 @@ public class BaseSteps {
         logoApp.check(matches(isDisplayed()));
     }
 
-    public void mainMenuButtonClick() {
-        mainPage.hamburgerMenuButtonClick();
+    public void navigationTo(String page) {
+        switch (page) {
+            case "AboutPage":
+                mainPage.goToAboutPage();
+                break;
+            case "NewsPage":
+                mainPage.goToNewsPage();
+                break;
+            case "MainPage":
+                mainPage.goToMainPage();
+                break;
+            case "QuotesPage":
+                mainPage.goToQuotesPage();
+                break;
+            default:
+                System.out.println("Invalid page name: " + page);
+                break;
+        }
     }
+
+    public void ensureAuthenticated() {
+        try {
+            onView(isRoot()).perform(waitDisplayed(R.id.trademark_image_view, 5000));
+        } catch (Exception e) {
+            authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
+        }
+    }
+
+    public void checkInitStateAppWhenUserAuth() {
+        mainPage.checkInitStatePage();
+    }
+
 }

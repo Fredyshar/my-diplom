@@ -3,7 +3,6 @@ package ru.iteco.fmhandroid.ui.tests;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,15 +14,12 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.common.TestData;
 import ru.iteco.fmhandroid.ui.pages.AboutPage;
-import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
 public class AboutPageTests {
     private final BaseSteps baseSteps = new BaseSteps();
-    private final AuthorizationPage authPage = new AuthorizationPage();
-    private final MainPage mainPage = new MainPage();
     private final TestData testData = new TestData();
     private final AboutPage aboutPage = new AboutPage();
 
@@ -32,14 +28,9 @@ public class AboutPageTests {
             new ActivityScenarioRule<>(AppActivity.class);
 
     @Before
-    public void logIn() {
-        authPage.logIn(testData.getValidLogin(), testData.getValidPassword());
-        mainPage.goToAboutPage();
-    }
-
-    @After
-    public void logOut() {
-        baseSteps.logout();
+    public void setUp() {
+        baseSteps.ensureAuthenticated();
+        baseSteps.navigationTo("AboutPage");
     }
 
     @Test
@@ -49,7 +40,7 @@ public class AboutPageTests {
         aboutPage.checkDisplayedTitlesAndLink();
 
         aboutPage.clickBackButton();
-        mainPage.checkInitStatePage();
+        baseSteps.checkInitStateAppWhenUserAuth();
     }
 
     @Test
