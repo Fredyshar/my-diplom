@@ -6,7 +6,7 @@ Pre-condition:
 - На эмуляторе отключена анимация.
 
 Steps:
-1. Клонировать проект - https://github.com/Fredyshar/my_diplom.git
+1. Клонировать проект - https://github.com/Fredyshar/my-diplom.git
 2. Открыть его в Android Studio
 3. Запустить настроенный эмулятор
 4. Открыть терминал в корневой папке проекта и запустить команду "./gradlew connectedAndroidTest --info"
@@ -17,7 +17,7 @@ Steps:
 ![img.png](img.png)
 
 Для работы только через терминал:
-1. Клонировать проект - https://github.com/Fredyshar/my_diplom.git
+1. Клонировать проект - https://github.com/Fredyshar/my-diplom.git
 2. В терминале перейти в папку с эмулятором и запустить его, пример:
   'cd ~/Library/Android/sdk/emulator
    ./emulator -avd <имя_AVD>'
